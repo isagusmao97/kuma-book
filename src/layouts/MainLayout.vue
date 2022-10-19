@@ -4,20 +4,80 @@
       <q-toolbar class="bg-purple-10">
         <q-btn
             class="text-white"
-            :label="acesso"
             icon="menu"
+             @click="drawer = !drawer"
           >
-            
           </q-btn>
       </q-toolbar>
     </q-header>
+
+     <q-drawer
+        v-model="drawer"
+        show-if-above
+        :width="250"
+        :breakpoint="500"
+      >
+        <q-scroll-area class="fit">
+          <q-list padding class="menu-list">
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="assignment" />
+              </q-item-section>
+
+              <q-item-section>
+                Gerenciar Estoque
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="list_alt" />
+              </q-item-section>
+
+              <q-item-section>
+                Gerenciar Produtos
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="store" />
+              </q-item-section>
+
+              <q-item-section>
+                Gerenciar Vendas
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="group" />
+              </q-item-section>
+
+              <q-item-section>
+                Gerenciar Funcionários
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="person" />
+              </q-item-section>
+
+              <q-item-section>
+                Gerenciar Clientes
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-scroll-area>
+      </q-drawer>
      
     <q-page-container>
       <router-view  class="q-pa-md"/>
     </q-page-container>
 
     <q-footer elevated class="bg-purple-10 q-pa-sm text-white text-center">
-      <span>Desenvolvido por Kuma Book :/</span>
+      <span>Desenvolvido por Kuma Book</span>
     </q-footer>
 
   </q-layout>
@@ -31,9 +91,16 @@ export default defineComponent({
 
 
   setup(){
-    
+    return {
+      drawer: ref(false),
+    }
 
     }  
 
 });
 </script>
+
+<style lang="sass" scoped>
+.menu-list .q-item
+  border-radius: 0 50px 50px 0
+</style>
