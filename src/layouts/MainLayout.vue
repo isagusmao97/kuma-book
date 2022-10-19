@@ -19,7 +19,7 @@
       >
         <q-scroll-area class="fit">
           <q-list padding class="menu-list">
-            <q-item clickable v-ripple>
+            <q-item clickable v-ripple to="/pagina-estoque" active-class="my-menu-link" exact>
               <q-item-section avatar>
                 <q-icon name="assignment" />
               </q-item-section>
@@ -29,7 +29,7 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple>
+            <q-item clickable v-ripple to="/pagina-produto">
               <q-item-section avatar>
                 <q-icon name="list_alt" />
               </q-item-section>
@@ -39,7 +39,7 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple>
+            <q-item clickable v-ripple to="/pagina-venda">
               <q-item-section avatar>
                 <q-icon name="store" />
               </q-item-section>
@@ -49,7 +49,7 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple>
+            <q-item clickable v-ripple to="/pagina-funcionario">
               <q-item-section avatar>
                 <q-icon name="group" />
               </q-item-section>
@@ -59,7 +59,7 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple>
+            <q-item clickable v-ripple to="/pagina-cliente">
               <q-item-section avatar>
                 <q-icon name="person" />
               </q-item-section>
@@ -100,7 +100,13 @@ export default defineComponent({
 });
 </script>
 
-<style lang="sass" scoped>
-.menu-list .q-item
+<style lang="scss">
+.menu-list .q-item{
   border-radius: 0 50px 50px 0
+}
+.my-menu-link{
+  color:white;
+  background: #9080BA;
+}
+  
 </style>

@@ -1,5 +1,5 @@
 <template>
     <q-page>
-        Algo será escrito aqui em breve :)
+        <div class="text-h6">Algo sera escrito aqui em breve :)</div>
     </q-page>
 </template>

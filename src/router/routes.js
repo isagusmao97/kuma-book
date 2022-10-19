@@ -8,10 +8,31 @@ const routes = [
     ]
   },
   {
-    path: "",
+    path: "/pagina-produto",
     component: () =>
       import("src/pages/Produto/PaginaProduto.vue"),
   },
+  {
+    path: "/pagina-estoque",
+    component: () =>
+      import("src/pages/Estoque/PaginaEstoque.vue"),
+  },
+  {
+    path: "/pagina-venda",
+    component: () =>
+      import("src/pages/Venda/PaginaVenda.vue"),
+  },
+  {
+    path: "/pagina-funcionario",
+    component: () =>
+      import("src/pages/Funcionario/PaginaFuncionario.vue"),
+  },
+  {
+    path: "/pagina-cliente",
+    component: () =>
+      import("src/pages/Cliente/PaginaCliente.vue"),
+  },
+  
 
 
   // Always leave this as last one,
