@@ -29,7 +29,7 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple to="/pagina-produto">
+            <q-item clickable v-ripple to="/pagina-produto" active-class="my-menu-link" exact>
               <q-item-section avatar>
                 <q-icon name="list_alt" />
               </q-item-section>
@@ -39,7 +39,7 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple to="/pagina-venda">
+            <q-item clickable v-ripple to="/pagina-venda" active-class="my-menu-link" exact>
               <q-item-section avatar>
                 <q-icon name="store" />
               </q-item-section>
@@ -49,7 +49,7 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple to="/pagina-funcionario">
+            <q-item clickable v-ripple to="/pagina-funcionario" active-class="my-menu-link" exact>
               <q-item-section avatar>
                 <q-icon name="group" />
               </q-item-section>
@@ -59,7 +59,7 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple to="/pagina-cliente">
+            <q-item clickable v-ripple to="/pagina-cliente" active-class="my-menu-link" exact>
               <q-item-section avatar>
                 <q-icon name="person" />
               </q-item-section>
