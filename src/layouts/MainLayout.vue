@@ -78,9 +78,9 @@
       <router-view  class="q-pa-md"/>
     </q-page-container>
 
-    <q-footer elevated class="bg-purple-10 q-pa-sm text-white text-center">
+    <!-- <q-footer elevated class="bg-purple-10 q-pa-sm text-white text-center">
       <span>Desenvolvido por Kuma Book</span>
-    </q-footer>
+    </q-footer> -->
 
   </q-layout>
 </template>
