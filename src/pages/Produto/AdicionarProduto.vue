@@ -33,6 +33,39 @@
             :rules="[(val) => !!val || 'Campo Obrigatório']"
           />
         </div>
+        <div class="col-12 col-sm-6">
+          <q-input
+            ref="prateleira"
+            type="text"
+            dense
+            outlined
+            v-model="form.prateleira"
+            label="Prateleira"
+            :rules="[(val) => !!val || 'Campo Obrigatório']"
+          />
+        </div>
+        <div class="col-6">
+          <q-input
+            ref="codigo"
+            type="text"
+            dense
+            outlined
+            v-model="form.codigo"
+            label="Código"
+            :rules="[(val) => !!val || 'Campo Obrigatório']"
+          />
+        </div>
+        <div class="col-2">
+          <q-input
+            ref="sessao"
+            type="text"
+            dense
+            outlined
+            v-model="form.sessao"
+            label="Sessão"
+            :rules="[(val) => !!val || 'Campo Obrigatório']"
+          />
+        </div>
         <div class="col-4">
           <q-input
             ref="autor"
@@ -101,6 +134,9 @@ export default {
       editora: "",
       autor: "",
       ano: "",
+      prateleira:"",
+      codigo:"",
+      sessao:"",
     });
 
 
