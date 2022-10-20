@@ -49,7 +49,7 @@
               icon="edit"
               @click="
                 $router.push(
-                  `/configuracoes/secretarias/editar/${scope.row.id}`
+                  `/produto/editar/${scope.row.id}`
                 )
               "
             />
@@ -136,7 +136,7 @@ const campos = [
 export default {
   setup() {
     const $q = useQuasar();
-    const secretarias = ref([]);
+    const produto = ref([]);
     const paginaAtual = ref(1);
     const totalPaginas = ref(0);
     const pesquisa = ref("");
@@ -152,9 +152,9 @@ export default {
       $q.loading.show();
       try {
         const request = await api.get(
-          `secretaria?pagina=${pagina}&pesquisa=${pesquisa.value}`
+          `produto?pagina=${pagina}&pesquisa=${pesquisa.value}`
         );
-        secretarias.value = request.data.items;
+        produto.value = request.data.items;
         totalPaginas.value = request.data.meta.totalPages;
         $q.loading.hide();
       } catch (error) {
@@ -169,7 +169,7 @@ export default {
     }
 
     function exibeMensagemConfirmacao(id) {
-      exibeMensagem("Tem certeza de que deseja excluir essa secretaria?").onOk(
+      exibeMensagem("Tem certeza de que deseja excluir esse produto?").onOk(
         () => {
           exclui(id);
         }
@@ -178,11 +178,11 @@ export default {
 
     async function exclui(item) {
       try {
-        const request = await api.delete(`secretaria/${item}`);
+        const request = await api.delete(`produto/${item}`);
         if (request.status == 200) {
           $q.notify({
             type: "positive",
-            message: "Secretaria removida com sucesso!",
+            message: "Produto removido com sucesso!",
             position: "top",
             timeout: 350,
           });
@@ -199,7 +199,7 @@ export default {
     }
     return {
       campos,
-      secretarias,
+      produto,
       paginaAtual,
       totalPaginas,
       pagination,
