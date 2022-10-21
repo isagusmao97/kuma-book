@@ -12,10 +12,11 @@
     </q-header>
 
      <q-drawer
-        class="bg-grey-2"
+        class="bg-grey-4"
         v-model="drawer"
         side="left"
         show-if-above
+        bordered
         :width="250"
         :breakpoint="500"
       >

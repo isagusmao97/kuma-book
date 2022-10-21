@@ -16,6 +16,11 @@ const routes = [
           import("src/pages/Produto/AdicionarProduto.vue"),
       },
       {
+        path: "/editar-produto",
+        component: () =>
+          import("src/pages/Produto/EditarProduto.vue"),
+      },
+      {
         path: "/pagina-estoque",
         component: () =>
           import("src/pages/Estoque/PaginaEstoque.vue"),

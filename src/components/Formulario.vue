@@ -1,0 +1,241 @@
+<template>
+  <div>
+    <q-form @submit="submit" greedy>
+      <div class="row q-col-gutter-md">
+        <div class="col-12">
+          <q-input
+            ref="nomeRef"
+            dense
+            outlined
+            v-model="form.nome"
+            label="Nome"
+            :rules="[(val) => !!val || 'Campo Obrigatório']"
+          />
+        </div>
+        <div class="col-12 col-sm-6">
+          <q-input
+            ref="quantidade"
+            dense
+            outlined
+            v-model="form.quantidade"
+            label="Quantidade"
+            :rules="[(val) => !!val || 'Campo Obrigatório']"
+          />
+        </div>
+        <div class="col-12 col-sm-6">
+          <q-input
+            ref="editora"
+            type="text"
+            dense
+            outlined
+            v-model="form.editora"
+            label="Editora"
+            :rules="[(val) => !!val || 'Campo Obrigatório']"
+          />
+        </div>
+        <div class="col-12 col-sm-6">
+          <q-input
+            ref="prateleira"
+            type="text"
+            dense
+            outlined
+            v-model="form.prateleira"
+            label="Prateleira"
+            :rules="[(val) => !!val || 'Campo Obrigatório']"
+          />
+        </div>
+        <div class="col-6">
+          <q-input
+            ref="codigo"
+            type="text"
+            dense
+            outlined
+            v-model="form.codigo"
+            label="Código"
+            :rules="[(val) => !!val || 'Campo Obrigatório']"
+          />
+        </div>
+        <div class="col-2">
+          <q-input
+            ref="sessao"
+            type="text"
+            dense
+            outlined
+            v-model="form.sessao"
+            label="Sessão"
+            :rules="[(val) => !!val || 'Campo Obrigatório']"
+          />
+        </div>
+        <div class="col-4">
+          <q-input
+            ref="autor"
+            dense
+            outlined
+            v-model="form.autor"
+            label="Autor"
+            :rules="[(val) => !!val || 'Campo Obrigatório']"
+          />
+        </div>
+        <div class="col-2">
+          <q-input
+            ref="ano"
+            dense
+            outlined
+            v-model="form.ano"
+            label="Ano"
+            lazy-rules
+            :rules="[(val) => !!val || 'Campo Obrigatório']"
+          />
+        </div>
+      </div>
+
+      <div class="q-mt-md">
+        <q-btn
+          size="md"
+          icon="check"
+          :label="`${acao === 'editar' ? 'Atualizar' : 'Cadastrar'}`"
+          type="submit"
+          color="purple-10"
+        />
+        <q-btn
+          icon="close"
+          label="Cancelar"
+          color="grey-2"
+          class="q-ml-sm"
+          text-color="grey-10"
+          @click="$router.go(-1)"
+        />
+      </div>
+    </q-form>
+  </div>
+</template>
+
+<script>
+import { ref, onMounted } from "vue";
+import { api } from "boot/axios";
+import { useQuasar } from "quasar";
+import { useRouter, useRoute } from "vue-router";
+import axios from "axios";
+
+export default {
+  props: {
+    acao: {
+      default: "adicionar",
+    },
+  },
+  setup(props) {
+    const $q = useQuasar();
+    const $router = useRouter();
+    const $route = useRoute();
+
+    const form = ref({
+      nome: "",
+      quantidade: "",
+      editora: "",
+      autor: "",
+      ano: "",
+      prateleira:"",
+      codigo:"",
+      sessao:"",
+    });
+
+
+    onMounted(() => {
+      if (props.acao === "editar") {
+        carregaDados();
+      }
+    });
+
+    async function carregaDados() {
+      $q.loading.show();
+      try {
+        const request = await api.get(`produto/${$route.params.id}`);
+        if (request.status == 200) {
+          form.value = request.data;
+        }
+        $q.loading.hide();
+      } catch (error) {
+        $q.notify({
+          color: "negative",
+          position: "top",
+          message: "Ocorreu um erro!",
+          icon: "report_problem",
+        });
+        $q.loading.hide();
+      }
+    }
+
+    function submit() {
+      if (props.acao === "editar") {
+        atualiza();
+      } else {
+        cadastra();
+      }
+    }
+
+    async function cadastra() {
+      try {
+        const request = await api.post(`produto`, form.value);
+        if (request.status == 201) {
+          $q.notify({
+            color: "positive",
+            position: "top",
+            message: "Produto cadastrado com sucesso!",
+            icon: "check",
+          });
+          $router.push("/produto");
+        }
+        $q.loading.hide();
+      } catch (error) {
+        $q.notify({
+          color: "negative",
+          position: "top",
+          message: "Ocorreu um erro!",
+          icon: "report_problem",
+        });
+        $q.loading.hide();
+      }
+    }
+
+    async function atualiza() {
+      try {
+        const request = await api.put(
+          `produto/${$route.params.id}`,
+          form.value
+        );
+        if (request.status == 200) {
+          $q.notify({
+            color: "positive",
+            position: "top",
+            message: "Produto atualizado com sucesso!",
+            icon: "check",
+          });
+          $router.push("/produto");
+        }
+        $q.loading.hide();
+      } catch (error) {
+        $q.notify({
+          color: "negative",
+          position: "top",
+          message: "Ocorreu um erro!",
+          icon: "report_problem",
+        });
+        $q.loading.hide();
+      }
+    }
+
+    return {
+      form,
+      submit,
+      
+    };
+  },
+};
+</script>
+<style scoped>
+label {
+  color: #777;
+}
+</style>
+
+    
