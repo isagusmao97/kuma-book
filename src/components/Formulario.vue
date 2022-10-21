@@ -100,9 +100,9 @@
         <q-btn
           icon="close"
           label="Cancelar"
-          color="grey-2"
+          outline
           class="q-ml-sm"
-          text-color="grey-10"
+          text-color="purple-10"
           @click="$router.go(-1)"
         />
       </div>
