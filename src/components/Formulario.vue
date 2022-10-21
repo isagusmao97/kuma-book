@@ -115,7 +115,7 @@ import { ref, onMounted } from "vue";
 import { api } from "boot/axios";
 import { useQuasar } from "quasar";
 import { useRouter, useRoute } from "vue-router";
-import axios from "axios";
+// import axios from "axios";
 
 export default {
   props: {
