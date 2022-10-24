@@ -6,7 +6,7 @@
         color="purple-10"
         label="Adicionar"
         size="md"
-        to="/adicionar-produto"
+        to="/adicionar-produtos"
       />
       <q-input
         style="width: 40%"
@@ -49,7 +49,7 @@
               icon="edit"
               @click="
                 $router.push(
-                  `/produto/editar/${scope.row.id}`
+                  `/produtos/editar/${scope.row.id}`
                 )
               "
             />
@@ -91,15 +91,6 @@ import exibeMensagem from "boot/mensagem";
 
 const campos = [
   {
-    name: "quantidade",
-    required: true,
-    label: "Quantidade",
-    align: "left",
-    field: "quantidade",
-    sortable: true,
-    style: "width: 45%",
-  },
-  {
     name: "nome",
     align: "left",
     label: "Nome",
@@ -126,9 +117,17 @@ const campos = [
 
   {
     name: "ano",
-    field: "ano",
+    field: "ano_lancamento",
     align: "center",
     label: "Ano",
+    style: "width: 5%",
+  },
+
+  {
+    name: "preço",
+    field: "preco",
+    align: "center",
+    label: "preco",
     style: "width: 5%",
   },
 ];
@@ -148,17 +147,22 @@ export default {
       buscaDados();
     });
 
-    /* em inspecionar no console aparece erro no sq.loading.show(), 
+    /* em inspecionar no console aparece erro no sq.loading.show(),
     dizendo que está vazio e não pode ler. Veremos depois quando fizermos a integração. */
 
     async function buscaDados(pagina = 1) {
-      $q.loading.show();
+      $q.loading.show({
+        message: 'Buscando dados...'
+      })
       try {
         const request = await api.get(
-          `produto?pagina=${pagina}&pesquisa=${pesquisa.value}`
+          `produtos`
         );
-        produto.value = request.data.items;
-        totalPaginas.value = request.data.meta.totalPages;
+
+        console.log(request)
+
+        produto.value = request.data;
+        // totalPaginas.value = request.data.meta.totalPages;
         $q.loading.hide();
       } catch (error) {
         $q.notify({
@@ -167,6 +171,7 @@ export default {
           message: "Ocorreu um erro!",
           icon: "report_problem",
         });
+        console.log(error)
         $q.loading.hide();
       }
     }
@@ -181,7 +186,7 @@ export default {
 
     async function exclui(item) {
       try {
-        const request = await api.delete(`produto/${item}`);
+        const request = await api.delete(`produtos/${item}`);
         if (request.status == 200) {
           $q.notify({
             type: "positive",

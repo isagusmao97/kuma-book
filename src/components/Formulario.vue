@@ -12,7 +12,7 @@
             :rules="[(val) => !!val || 'Campo Obrigatório']"
           />
         </div>
-        <div class="col-12 col-sm-6">
+        <!-- <div class="col-12 col-sm-6">
           <q-input
             ref="quantidade"
             dense
@@ -21,7 +21,7 @@
             label="Quantidade"
             :rules="[(val) => !!val || 'Campo Obrigatório']"
           />
-        </div>
+        </div> -->
         <div class="col-12 col-sm-6">
           <q-input
             ref="editora"
@@ -33,7 +33,7 @@
             :rules="[(val) => !!val || 'Campo Obrigatório']"
           />
         </div>
-        <div class="col-12 col-sm-6">
+        <!-- <div class="col-12 col-sm-6">
           <q-input
             ref="prateleira"
             type="text"
@@ -43,8 +43,8 @@
             label="Prateleira"
             :rules="[(val) => !!val || 'Campo Obrigatório']"
           />
-        </div>
-        <div class="col-6">
+        </div> -->
+        <!-- <div class="col-6">
           <q-input
             ref="codigo"
             type="text"
@@ -54,8 +54,8 @@
             label="Código"
             :rules="[(val) => !!val || 'Campo Obrigatório']"
           />
-        </div>
-        <div class="col-2">
+        </div> -->
+        <!-- <div class="col-2">
           <q-input
             ref="sessao"
             type="text"
@@ -65,7 +65,7 @@
             label="Sessão"
             :rules="[(val) => !!val || 'Campo Obrigatório']"
           />
-        </div>
+        </div> -->
         <div class="col-4">
           <q-input
             ref="autor"
@@ -79,11 +79,23 @@
         <div class="col-2">
           <q-input
             ref="ano"
+            type="text"
             dense
             outlined
-            v-model="form.ano"
+            v-model="form.ano_lancamento"
             label="Ano"
             lazy-rules
+            :rules="[(val) => !!val || 'Campo Obrigatório']"
+          />
+        </div>
+        <div class="col-2">
+          <q-input
+            ref="preco"
+            type="number"
+            dense
+            outlined
+            v-model="form.preco"
+            label="Preço"
             :rules="[(val) => !!val || 'Campo Obrigatório']"
           />
         </div>
@@ -115,7 +127,6 @@ import { ref, onMounted } from "vue";
 import { api } from "boot/axios";
 import { useQuasar } from "quasar";
 import { useRouter, useRoute } from "vue-router";
-// import axios from "axios";
 
 export default {
   props: {
@@ -130,13 +141,10 @@ export default {
 
     const form = ref({
       nome: "",
-      quantidade: "",
       editora: "",
       autor: "",
-      ano: "",
-      prateleira:"",
-      codigo:"",
-      sessao:"",
+      ano_lancamento: "",
+      preco: "",
     });
 
 
@@ -149,7 +157,7 @@ export default {
     async function carregaDados() {
       $q.loading.show();
       try {
-        const request = await api.get(`produto/${$route.params.id}`);
+        const request = await api.get(`produtos/${$route.params.id}`);
         if (request.status == 200) {
           form.value = request.data;
         }
@@ -175,7 +183,7 @@ export default {
 
     async function cadastra() {
       try {
-        const request = await api.post(`produto`, form.value);
+        const request = await api.post(`produtos`, form.value);
         if (request.status == 201) {
           $q.notify({
             color: "positive",
@@ -183,7 +191,7 @@ export default {
             message: "Produto cadastrado com sucesso!",
             icon: "check",
           });
-          $router.push("/produto");
+          $router.push("/pagina-produtos");
         }
         $q.loading.hide();
       } catch (error) {
@@ -200,7 +208,7 @@ export default {
     async function atualiza() {
       try {
         const request = await api.put(
-          `produto/${$route.params.id}`,
+          `produtos/${$route.params.id}`,
           form.value
         );
         if (request.status == 200) {
@@ -210,7 +218,7 @@ export default {
             message: "Produto atualizado com sucesso!",
             icon: "check",
           });
-          $router.push("/produto");
+          $router.push("/pagina-produtos");
         }
         $q.loading.hide();
       } catch (error) {
@@ -227,7 +235,7 @@ export default {
     return {
       form,
       submit,
-      
+
     };
   },
 };
@@ -238,4 +246,3 @@ label {
 }
 </style>
 
-    

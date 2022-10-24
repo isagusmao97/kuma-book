@@ -32,7 +32,7 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple to="/pagina-produto" active-class="my-menu-link" exact>
+            <q-item clickable v-ripple to="/pagina-produtos" active-class="my-menu-link" exact>
               <q-item-section avatar>
                 <q-icon name="list_alt" />
               </q-item-section>
@@ -74,7 +74,7 @@
           </q-list>
         </q-scroll-area>
       </q-drawer>
-     
+
     <q-page-container>
       <router-view  class="q-pa-md"/>
     </q-page-container>
@@ -98,7 +98,7 @@ export default defineComponent({
       drawer: ref(false),
     }
 
-    }  
+    }
 
 });
 </script>
@@ -111,5 +111,5 @@ export default defineComponent({
   color:white;
   background: #9080BA;
 }
-  
+
 </style>
