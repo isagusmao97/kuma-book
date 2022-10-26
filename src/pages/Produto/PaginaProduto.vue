@@ -191,9 +191,9 @@ export default {
       );
     }
 
-    async function exclui(item) {
+    async function exclui(id) {
       try {
-        const request = await api.delete(`produtos/${item}`);
+        const request = await api.delete(`produtos/${id}`);
         if (request.status == 200) {
           $q.notify({
             type: "positive",
