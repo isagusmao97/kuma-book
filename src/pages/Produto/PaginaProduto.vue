@@ -132,7 +132,7 @@ const campos = [
   },
   {
     name: "acao",
-    field: "acoes",
+    field: "acao",
     align: "center",
     label: "Ações",
     style: "width: 50%",
@@ -220,6 +220,7 @@ export default {
       pagination,
       pesquisa,
       exclui,
+      exibeMensagem,
       exibeMensagemConfirmacao,
       buscaDados,
     };

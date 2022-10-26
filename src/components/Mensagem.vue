@@ -1,5 +1,4 @@
 <template>
-  <!-- notice dialogRef here -->
   <q-dialog ref="dialogRef" @hide="onDialogHide">
     <q-card class="q-dialog-plugin">
       <q-card-section
@@ -7,7 +6,7 @@
         class="colum items-center justify-between text-center"
       >
         <q-avatar icon="live_help" color="warning" text-color="white" />
-        <div class="text-h5">{{ messagem }}</div>
+        <div class="text-h6">Deseja realmente excluir este produto?</div>
       </q-card-section>
 
       <q-card-section class="q-pt-none text-center">
