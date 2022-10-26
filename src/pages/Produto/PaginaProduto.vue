@@ -127,7 +127,14 @@ const campos = [
     name: "preço",
     field: "preco",
     align: "center",
-    label: "preco",
+    label: "Preco",
+    style: "width: 5%",
+  },
+  {
+    name: "acoes",
+    field: "acoes",
+    align: "center",
+    label: "Ações",
     style: "width: 5%",
   },
 ];

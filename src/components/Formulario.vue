@@ -79,7 +79,7 @@
         <div class="col-2">
           <q-input
             ref="ano"
-            type="text"
+            type="number"
             dense
             outlined
             v-model="form.ano_lancamento"
