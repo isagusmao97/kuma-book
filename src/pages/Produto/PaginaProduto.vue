@@ -154,9 +154,6 @@ export default {
       buscaDados();
     });
 
-    /* em inspecionar no console aparece erro no sq.loading.show(),
-    dizendo que está vazio e não pode ler. Veremos depois quando fizermos a integração. */
-
     async function buscaDados(pagina = 1) {
       $q.loading.show({
         message: 'Buscando dados...'
