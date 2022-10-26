@@ -49,7 +49,7 @@
               icon="edit"
               @click="
                 $router.push(
-                  `pages/produtos/editar-produto/${scope.row.id}`
+                  `produtos/editar/${scope.row.id}`
                 )
               "
             />
