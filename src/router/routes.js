@@ -16,7 +16,7 @@ const routes = [
           import("src/pages/Produto/AdicionarProduto.vue"),
       },
       {
-        path: "/editar-produtos",
+        path: "/editar-produtos/:id",
         component: () =>
           import("src/pages/Produto/EditarProduto.vue"),
       },

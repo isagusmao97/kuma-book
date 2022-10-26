@@ -49,7 +49,7 @@
               icon="edit"
               @click="
                 $router.push(
-                  `produtos/editar/${scope.row.id}`
+                  `/editar-produtos/${scope.row.id}`
                 )
               "
             />
@@ -59,7 +59,7 @@
               unelevated
               color="negative"
               icon="close"
-              @click="exibeMensagem(scope.row.id)"
+              @click="exibeMensagemConfirmacao(scope.row.id)"
               title="Excluir"
             />
           </div>
@@ -191,9 +191,9 @@ export default {
       );
     }
 
-    async function exclui(id) {
+    async function exclui(item) {
       try {
-        const request = await api.delete(`produtos/${id}`);
+        const request = await api.delete(`produtos/${item}`);
         if (request.status == 200) {
           $q.notify({
             type: "positive",

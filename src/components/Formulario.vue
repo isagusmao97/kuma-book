@@ -218,7 +218,7 @@ export default {
             message: "Produto atualizado com sucesso!",
             icon: "check",
           });
-          $router.push("/produtos/editar");
+          $router.push("/pagina-produtos");
         }
         $q.loading.hide();
       } catch (error) {
