@@ -71,7 +71,7 @@
         @update:model-value="buscaDados"
         v-model="paginaAtual"
         :max="totalPaginas"
-        :max-pages="5"
+        :max-pages="20"
         direction-links
         unelevated
         color="grey-10"
@@ -147,7 +147,7 @@ export default {
     const totalPaginas = ref(0);
     const pesquisa = ref("");
     const pagination = ref({
-      rowsPerPage: 5,
+      rowsPerPage: 20,
     });
 
     onMounted(() => {
