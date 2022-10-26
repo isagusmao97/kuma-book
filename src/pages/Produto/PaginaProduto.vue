@@ -45,7 +45,7 @@
               dense
               size="sm"
               unelevated
-              color="warning"
+              color="purple-10"
               icon="edit"
               @click="
                 $router.push(
