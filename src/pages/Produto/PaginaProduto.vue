@@ -49,7 +49,7 @@
               icon="edit"
               @click="
                 $router.push(
-                  `/produtos/editar/${scope.row.id}`
+                  `pages/produtos/editar-produto/${scope.row.id}`
                 )
               "
             />
@@ -59,7 +59,7 @@
               unelevated
               color="negative"
               icon="close"
-              @click="exibeMensagemConfirmacao(scope.row.id)"
+              @click="exibeMensagem(scope.row.id)"
               title="Excluir"
             />
           </div>
@@ -96,7 +96,7 @@ const campos = [
     label: "Nome",
     field: "nome",
     sortable: true,
-    style: "width: 15%",
+    style: "width: 35%",
   },
   {
     name: "editora",
@@ -120,7 +120,7 @@ const campos = [
     field: "ano_lancamento",
     align: "center",
     label: "Ano",
-    style: "width: 5%",
+    style: "width: 15%",
   },
 
   {
@@ -128,14 +128,14 @@ const campos = [
     field: "preco",
     align: "center",
     label: "Preco",
-    style: "width: 5%",
+    style: "width: 15%",
   },
   {
-    name: "acoes",
+    name: "acao",
     field: "acoes",
     align: "center",
     label: "Ações",
-    style: "width: 5%",
+    style: "width: 50%",
   },
 ];
 
@@ -147,7 +147,7 @@ export default {
     const totalPaginas = ref(0);
     const pesquisa = ref("");
     const pagination = ref({
-      rowsPerPage: 20,
+      rowsPerPage: 5,
     });
 
     onMounted(() => {
