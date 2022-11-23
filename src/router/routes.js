@@ -26,6 +26,16 @@ const routes = [
           import("src/pages/Estoque/PaginaEstoque.vue"),
       },
       {
+        path: "/adicionar-estoque",
+        component: () =>
+          import("src/pages/Estoque/AdicionarEstoque.vue"),
+      },
+      {
+        path: "/editar-estoque/:id",
+        component: () =>
+          import("src/pages/Estoque/EditarEstoque.vue"),
+      },
+      {
         path: "/pagina-venda",
         component: () =>
           import("src/pages/Venda/PaginaVenda.vue"),
