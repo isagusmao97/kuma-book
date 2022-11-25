@@ -2,17 +2,7 @@
     <div>
     <q-form @submit="submit" greedy>
       <div class="row q-col-gutter-md">
-        <div class="col-12">
-          <q-input
-            ref="nomeRef"
-            dense
-            outlined
-            v-model="form.nome"
-            label="Nome"
-            :rules="[(val) => !!val || 'Campo Obrigatório']"
-          />
-        </div>
-        <div class="col-12 col-sm-6">
+        <div class="col-10 col-sm-6">
           <q-input
             ref="quantidade"
             type="number"
@@ -22,30 +12,19 @@
             label="Quantidade"
             :rules="[(val) => !!val || 'Campo Obrigatório']"
           />
-        </div>
-        <div class="col-4">
+        </div> 
+        <div class="col-12 col-sm-6">
           <q-input
-            ref="autor"
-            dense
-            outlined
-            v-model="form.autor"
-            label="Autor"
-            :rules="[(val) => !!val || 'Campo Obrigatório']"
-          />
-        </div>
-        <div class="col-2">
-          <q-input
-            ref="editora"
+            ref="localizacao"
             type="text"
             dense
             outlined
-            v-model="form.editora"
-            label="Editora"
+            v-model="form.localizacao"
+            label="Localização"
             :rules="[(val) => !!val || 'Campo Obrigatório']"
           />
         </div>
       </div>
-
       <div class="q-mt-md">
         <q-btn
           size="md"
@@ -89,7 +68,8 @@ export default {
       editora: "",
       autor: "",
       quantidade: "",
-      editora: "",
+      ano: "",
+      localizacao:""
     });
 
 
