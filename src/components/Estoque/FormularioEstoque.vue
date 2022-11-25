@@ -133,9 +133,7 @@ export default {
     async function atualiza() {
       try {
         const request = await api.put(
-          `estoque/${$route.params.id}`,
-          form.value
-        );
+          `estoque/${$route.params.id}`,form.value);
         if (request.status == 200) {
           $q.notify({
             color: "positive",

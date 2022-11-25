@@ -128,7 +128,7 @@ const campos = [
     field: "ano",
     align: "center",
     label: "Ano",
-    style: "width: 15%",
+    style: "width: 10%",
   },
   {
     name: "acao",
