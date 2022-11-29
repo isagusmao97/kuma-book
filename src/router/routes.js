@@ -46,6 +46,16 @@ const routes = [
           import("src/pages/Funcionario/PaginaFuncionario.vue"),
       },
       {
+        path: "/adicionar-funcionario",
+        component: () =>
+          import("src/pages/Funcionario/AdicionarFuncionario.vue"),
+      },
+      {
+        path: "/editar-funcionario/:id",
+        component: () =>
+          import("src/pages/Funcionario/EditarFuncionario.vue"),
+      },
+      {
         path: "/pagina-cliente",
         component: () =>
           import("src/pages/Cliente/PaginaCliente.vue"),
