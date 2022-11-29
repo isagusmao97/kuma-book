@@ -6,7 +6,7 @@
         color="purple-10"
         label="Adicionar"
         size="md"
-        to="/adicionar-estoque"
+        to="/adicionar-funcionario"
       />
       <q-input
         style="width: 40%"
@@ -30,7 +30,7 @@
     <q-table
       separator="cell"
       bordered
-      :rows="estoque"
+      :rows="funcionario"
       :columns="campos"
       row-key="nome"
       class="q-mt-sm"
@@ -49,7 +49,7 @@
               icon="edit"
               @click="
                 $router.push(
-                  `/editar-estoque/${scope.row.id}`
+                  `/editar-funcionario/${scope.row.id}`
                 )
               "
             />
@@ -142,7 +142,7 @@ const campos = [
 export default {
   setup() {
     const $q = useQuasar();
-    const estoque = ref([]);
+    const funcionario = ref([]);
     const paginaAtual = ref(1);
     const totalPaginas = ref(0);
     const pesquisa = ref("");
@@ -160,7 +160,7 @@ export default {
       })
       try {
         const request = await api.get(
-          `estoque`
+          `funcionario`
         );
 
         console.log(request)
@@ -190,11 +190,11 @@ export default {
 
     async function exclui(item) {
       try {
-        const request = await api.delete(`estoque/${item}`);
+        const request = await api.delete(`funcionario/${item}`);
         if (request.status == 200) {
           $q.notify({
             type: "positive",
-            message: "Produto removido com sucesso!",
+            message: "Funcionario removido com sucesso!",
             position: "top",
             timeout: 350,
           });
@@ -211,7 +211,7 @@ export default {
     }
     return {
       campos,
-      estoque,
+      funcionario,
       paginaAtual,
       totalPaginas,
       pagination,
