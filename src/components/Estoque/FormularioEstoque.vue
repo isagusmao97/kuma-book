@@ -113,7 +113,7 @@ export default {
           $q.notify({
             color: "positive",
             position: "top",
-            message: "Produto cadastrado com sucesso!",
+            message: "Estoque cadastrado com sucesso!",
             icon: "check",
           });
           $router.push("/pagina-estoque");
@@ -138,7 +138,7 @@ export default {
           $q.notify({
             color: "positive",
             position: "top",
-            message: "Produto atualizado com sucesso!",
+            message: "Estoque atualizado com sucesso!",
             icon: "check",
           });
           $router.push("/pagina-estoque");
