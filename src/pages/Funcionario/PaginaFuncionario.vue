@@ -90,45 +90,38 @@ import { api } from "boot/axios";
 import exibeMensagem from "boot/mensagem";
 
 const campos = [
-  {
-    name: "quantidade",
-    align: "left",
-    label: "Quantidade",
-    field: "quantidade",
-    sortable: true,
-    style: "width: 15%",
-  },
+  
   {
     name: "nome",
     align: "left",
     label: "Nome",
     field: "nome",
     sortable: true,
-    style: "width: 20%",
+    style: "width: 45%",
   },
   {
-    name: "editora",
+    name: "endereco",
     align: "left",
-    label: "Editora",
-    field: "editora",
+    label: "Endereço",
+    field: "endereco",
     sortable: true,
     style: "width: 20%",
   },
 
   {
-    name: "autor",
-    field: "autor",
+    name: "telefone",
+    field: "telefone",
     align: "center",
-    label: "Autor",
+    label: "Telefone",
     style: "width: 15%",
   },
 
   {
-    name: "ano",
-    field: "ano",
+    name: "email",
+    field: "email",
     align: "center",
-    label: "Ano",
-    style: "width: 10%",
+    label: "Email",
+    style: "width: 15%",
   },
   {
     name: "acao",
