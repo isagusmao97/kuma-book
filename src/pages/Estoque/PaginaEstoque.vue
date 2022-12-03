@@ -139,7 +139,7 @@ export default {
       buscaDados();
     });
 
-    async function buscaDados(pagina = 1) {
+    async function buscaDados() {
       $q.loading.show({
         message: 'Buscando dados...'
       })
@@ -147,8 +147,6 @@ export default {
         const request = await api.get(
           `estoque`
         );
-
-        console.log(request)
 
         estoque.value = request.data;
         // totalPaginas.value = request.data.meta.totalPages;

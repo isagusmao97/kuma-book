@@ -1,6 +1,6 @@
 <template>
   <q-page>
-      <formulario-estoque  />
+      <formulario-estoque />
   </q-page>
 </template>
 

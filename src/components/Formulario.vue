@@ -42,6 +42,7 @@
             v-model="form.ano_lancamento"
             label="Ano"
             lazy-rules
+            mask="####"
             :rules="[(val) => !!val || 'Campo Obrigatório']"
           />
         </div>
