@@ -158,7 +158,7 @@ export default {
 
         console.log(request)
 
-        estoque.value = request.data;
+        funcionario.value = request.data;
         // totalPaginas.value = request.data.meta.totalPages;
         $q.loading.hide();
       } catch (error) {
@@ -174,7 +174,7 @@ export default {
     }
 
     function exibeMensagemConfirmacao(id) {
-      exibeMensagem("Tem certeza de que deseja excluir esse produto?").onOk(
+      exibeMensagem("Tem certeza de que deseja excluir esse funcionário?").onOk(
         () => {
           exclui(id);
         }
@@ -187,7 +187,7 @@ export default {
         if (request.status == 200) {
           $q.notify({
             type: "positive",
-            message: "Funcionario removido com sucesso!",
+            message: "Funcionário removido com sucesso!",
             position: "top",
             timeout: 350,
           });

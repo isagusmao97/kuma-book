@@ -129,7 +129,7 @@ export default {
     async function carregaDados() {
       $q.loading.show();
       try {
-        const request = await api.get(`produtos/${$route.params.id}`);
+        const request = await api.get(`funcionarios/${$route.params.id}`);
         if (request.status == 200) {
           form.value = request.data;
         }
@@ -155,15 +155,15 @@ export default {
 
     async function cadastra() {
       try {
-        const request = await api.post(`produtos`, form.value);
+        const request = await api.post(`funcionarios`, form.value);
         if (request.status == 201) {
           $q.notify({
             color: "positive",
             position: "top",
-            message: "Produto cadastrado com sucesso!",
+            message: "Funcionário cadastrado com sucesso!",
             icon: "check",
           });
-          $router.push("/pagina-produtos");
+          $router.push("/pagina-funcionario");
         }
         $q.loading.hide();
       } catch (error) {
@@ -180,17 +180,17 @@ export default {
     async function atualiza() {
       try {
         const request = await api.put(
-          `produtos/${$route.params.id}`,
+          `funcionarios/${$route.params.id}`,
           form.value
         );
         if (request.status == 200) {
           $q.notify({
             color: "positive",
             position: "top",
-            message: "Produto atualizado com sucesso!",
+            message: "Funcionário atualizado com sucesso!",
             icon: "check",
           });
-          $router.push("/pagina-produtos");
+          $router.push("/pagina-funcionario");
         }
         $q.loading.hide();
       } catch (error) {
