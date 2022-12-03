@@ -55,6 +55,7 @@
             v-model="form.horarioTrabalho"
             label="Horário de Trabalho"
             lazy-rules
+            hint="Preencha com o seu horário de trabalho"
             :rules="[(val) => !!val || 'Campo Obrigatório']"
           />
         </div>
@@ -72,7 +73,7 @@
         </div>
       </div>
 
-      <div class="q-mt-md">
+      <div class="q-mt-lg">
         <q-btn
           size="md"
           icon="check"
