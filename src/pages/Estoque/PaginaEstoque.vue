@@ -39,7 +39,7 @@
               icon="add"
               color="green-7"
               size="sm"
-              to="/adicionar-estoque"
+              :to="`/adicionar-estoque/${scope.row.id}`"
             />
             <q-btn
               title="Editar"

@@ -82,9 +82,14 @@ export default {
 
 
     onMounted(() => {
+     
       if (props.acao === "editar") {
         carregaDados();
-      }
+      }else{
+        const route = useRoute();
+        const id = route.params.id;
+        form.value.id_produto = id;
+      } 
     });
 
     async function carregaDados() {
@@ -93,6 +98,7 @@ export default {
         const request = await api.get(`estoque/${$route.params.id}`);
         if (request.status == 200) {
           form.value = request.data;
+          console.log(request)
         }
         $q.loading.hide();
       } catch (error) {
@@ -116,7 +122,9 @@ export default {
 
     async function cadastra() {
       try {
-        const request = await api.post(`estoque`, form.value);
+        const dadosFormatados = {...form.value,quantidade:parseInt(form.value.quantidade)}
+        
+        const request = await api.post(`estoque`, dadosFormatados);
         if (request.status == 201) {
           $q.notify({
             color: "positive",

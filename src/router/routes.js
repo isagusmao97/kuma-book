@@ -26,7 +26,7 @@ const routes = [
           import("src/pages/Estoque/PaginaEstoque.vue"),
       },
       {
-        path: "/adicionar-estoque",
+        path: "/adicionar-estoque/:id",
         component: () =>
           import("src/pages/Estoque/AdicionarEstoque.vue"),
       },
