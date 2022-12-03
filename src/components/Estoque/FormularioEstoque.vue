@@ -65,11 +65,8 @@ export default {
 
     const form = ref({
       nome: "",
-      editora: "",
-      autor: "",
       quantidade: "",
-      ano: "",
-      localizacao:""
+      localizacao:"",
     });
 
 

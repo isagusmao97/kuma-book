@@ -1,13 +1,6 @@
 <template>
     <div>
     <q-toolbar class="q-pa-none flex justify-between items-center">
-      <q-btn
-        icon="add_circle"
-        color="purple-10"
-        label="Adicionar"
-        size="md"
-        to="/adicionar-estoque"
-      />
       <q-input
         style="width: 40%"
         outlined
@@ -40,6 +33,14 @@
       <template v-slot:body-cell-acao="scope">
         <td>
           <div class="q-pa-sm text-center q-gutter-sm items-center">
+            <q-btn
+              title="Adicionar"
+              dense
+              icon="add"
+              color="green-7"
+              size="sm"
+              to="/adicionar-estoque"
+            />
             <q-btn
               title="Editar"
               dense
@@ -104,38 +105,22 @@ const campos = [
     label: "Nome",
     field: "nome",
     sortable: true,
-    style: "width: 20%",
+    style: "width: 60%",
   },
   {
-    name: "editora",
+    name: "localizacao",
     align: "left",
-    label: "Editora",
-    field: "editora",
+    label: "Localização",
+    field: "localizacao",
     sortable: true,
-    style: "width: 20%",
-  },
-
-  {
-    name: "autor",
-    field: "autor",
-    align: "center",
-    label: "Autor",
-    style: "width: 15%",
-  },
-
-  {
-    name: "ano",
-    field: "ano",
-    align: "center",
-    label: "Ano",
-    style: "width: 10%",
+    style: "width: 60%",
   },
   {
     name: "acao",
     field: "acao",
     align: "center",
     label: "Ações",
-    style: "width: 50%",
+    style: "width: 20%",
   },
 ];
 
