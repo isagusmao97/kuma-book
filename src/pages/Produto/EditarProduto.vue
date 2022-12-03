@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Formulario from "src/components/Formulario.vue";
+import Formulario from "src/components/Produto/Formulario.vue";
 
 export default {
   components: {
