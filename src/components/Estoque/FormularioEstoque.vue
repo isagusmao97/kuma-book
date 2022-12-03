@@ -4,6 +4,16 @@
       <div class="row q-col-gutter-md">
         <div class="col-10 col-sm-6">
           <q-input
+            ref="id"
+            dense
+            outlined
+            v-model="form.id_produto"
+            label="Id"
+            :rules="[(val) => !!val || 'Campo Obrigatório']"
+          />
+        </div> 
+        <div class="col-10 col-sm-6">
+          <q-input
             ref="quantidade"
             type="number"
             dense
@@ -67,6 +77,7 @@ export default {
       nome: "",
       quantidade: "",
       localizacao:"",
+      id_produto:"",
     });
 
 
