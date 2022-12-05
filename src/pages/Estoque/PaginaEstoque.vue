@@ -147,8 +147,20 @@ export default {
         const request = await api.get(
           `estoque`
         );
+        console.log(request.data)
+        /*estoque.value = {
+          nome: request.data.nome,
+          quantidade: request.data.estoque.quantidade,
+          localizacao: request.data.estoque.localizacao,        
+        };*/
+        request.data.forEach(produto => {
+          estoque.value.push ({
+            nome: produto.nome,
+            quantidade: produto.estoque.quantidade,
+            localizacao: produto.estoque.localizacao
+            })
+          });
 
-        estoque.value = request.data;
         // totalPaginas.value = request.data.meta.totalPages;
         $q.loading.hide();
       } catch (error) {
