@@ -148,18 +148,27 @@ export default {
           `estoque`
         );
         console.log(request.data)
+
+        // estoque.value = request.data;
         /*estoque.value = {
           nome: request.data.nome,
           quantidade: request.data.estoque.quantidade,
-          localizacao: request.data.estoque.localizacao,        
+          localizacao: request.data.estoque.localizacao,
         };*/
+
         request.data.forEach(produto => {
-          estoque.value.push ({
-            nome: produto.nome,
-            quantidade: produto.estoque.quantidade,
-            localizacao: produto.estoque.localizacao
-            })
+          if(produto.estoque) {
+            estoque.value.push ({
+              nome: produto.nome,
+              quantidade: produto.estoque.quantidade,
+              localizacao: produto.estoque.localizacao
+              })
+            }else {
+              estoque.value.push(produto);
+            }
           });
+
+
 
         // totalPaginas.value = request.data.meta.totalPages;
         $q.loading.hide();

@@ -49,7 +49,7 @@
               icon="edit"
               @click="
                 $router.push(
-                  `/editar-funcionario/${scope.row.id}`
+                  `/editar-funcionarios/${scope.row.id}`
                 )
               "
             />
@@ -90,7 +90,7 @@ import { api } from "boot/axios";
 import exibeMensagem from "boot/mensagem";
 
 const campos = [
-  
+
   {
     name: "nome",
     align: "left",
@@ -153,7 +153,7 @@ export default {
       })
       try {
         const request = await api.get(
-          `funcionario`
+          `funcionarios`
         );
 
         console.log(request)
@@ -179,7 +179,7 @@ export default {
       })
       try {
         const request = await api.get(
-          `funcionario/pesquisa/${pesquisa.value}`
+          `funcionarios/pesquisa/${pesquisa.value}`
         );
 
         console.log(request)
@@ -209,7 +209,7 @@ export default {
 
     async function exclui(item) {
       try {
-        const request = await api.delete(`funcionario/${item}`);
+        const request = await api.delete(`funcionarios/${item}`);
         if (request.status == 200) {
           $q.notify({
             type: "positive",
