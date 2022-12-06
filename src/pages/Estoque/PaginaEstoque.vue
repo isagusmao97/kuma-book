@@ -7,7 +7,7 @@
         v-model="pesquisa"
         label="Pesquisa"
         dense
-        @keyup.enter="buscaDados()"
+        @keyup.enter="buscaDadosPorNome()"
       >
         <template v-slot:append>
           <q-icon
@@ -175,6 +175,32 @@ export default {
       }
     }
 
+    async function buscaDadosPorNome() {
+      $q.loading.show({
+        message: 'Buscando dados...'
+      })
+      try {
+        const request = await api.get(
+          `estoque/pesquisa/${pesquisa.value}`
+        );
+
+        console.log(request)
+
+        produto.value = request.data;
+        // totalPaginas.value = request.data.meta.totalPages;
+        $q.loading.hide();
+      } catch (error) {
+        $q.notify({
+          color: "negative",
+          position: "top",
+          message: "Ocorreu um erro!",
+          icon: "report_problem",
+        });
+        console.log(error)
+        $q.loading.hide();
+      }
+    }
+
     function exibeMensagemConfirmacao(id) {
       exibeMensagem("Tem certeza de que deseja excluir esse produto?").onOk(
         () => {
@@ -215,6 +241,7 @@ export default {
       exibeMensagem,
       exibeMensagemConfirmacao,
       buscaDados,
+      buscaDadosPorNome,
     };
   },
 };
