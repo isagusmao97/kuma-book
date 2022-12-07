@@ -133,6 +133,7 @@ export default {
         const request = await api.get(`funcionarios/${$route.params.id}`);
         if (request.status == 200) {
           form.value = request.data;
+          console.log(request)
         }
         $q.loading.hide();
       } catch (error) {
@@ -156,7 +157,9 @@ export default {
 
     async function cadastra() {
       try {
-        const request = await api.post(`funcionarios`, form.value);
+        const dadosFormatados = {...form.value,telefone,matricula:parseInt(form.value.telefone,form.value.matricula)}
+        const request = await api.post(`funcionarios`, dadosFormatados);
+        
         if (request.status == 201) {
           $q.notify({
             color: "positive",
