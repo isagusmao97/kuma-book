@@ -39,7 +39,7 @@
               icon="add"
               color="green-7"
               size="sm"
-              :to="`/adicionar-estoque/${scope.row.id}`"
+              :to="`/adicionar-estoque/${scope.row.id_produto}`"
             />
             <q-btn
               title="Editar"
@@ -50,7 +50,7 @@
               icon="edit"
               @click="
                 $router.push(
-                  `/editar-estoque/${scope.row.id}`
+                  `/editar-estoque/${scope.row.id_estoque}`
                 )
               "
             />
@@ -60,7 +60,7 @@
               unelevated
               color="negative"
               icon="close"
-              @click="exibeMensagemConfirmacao(scope.row.id)"
+              @click="exibeMensagemConfirmacao(scope.row.id_estoque)"
               title="Excluir"
             />
           </div>
@@ -161,10 +161,15 @@ export default {
             estoque.value.push ({
               nome: produto.nome,
               quantidade: produto.estoque.quantidade,
-              localizacao: produto.estoque.localizacao
+              localizacao: produto.estoque.localizacao,
+              id_produto: produto.id,
+              id_estoque: produto.estoque.id,
               })
             }else {
-              estoque.value.push(produto);
+              estoque.value.push({
+                nome: produto.nome,
+                id_produto: produto.id,
+              });
             }
           });
 

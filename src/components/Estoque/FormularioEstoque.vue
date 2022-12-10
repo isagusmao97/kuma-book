@@ -7,7 +7,7 @@
             ref="id"
             dense
             outlined
-            v-model="form.id_produto"
+            v-model="form.id"
             label="Id"
             :rules="[(val) => !!val || 'Campo Obrigatório']"
           />
@@ -75,9 +75,10 @@ export default {
 
     const form = ref({
       nome: "",
-      quantidade: "",
+      quantidade: 0,
       localizacao:"",
-      id_produto:"",
+      id: "",
+      id_produto: ""
     });
 
 
@@ -88,7 +89,7 @@ export default {
       }else{
         const route = useRoute();
         const id = route.params.id;
-        form.value.id_produto = id;
+        form.value.id = id;
       } 
     });
 
@@ -97,8 +98,13 @@ export default {
       try {
         const request = await api.get(`estoque/${$route.params.id}`);
         if (request.status == 200) {
-          form.value = request.data;
-          console.log(request)
+          form.value = {
+            id: request.data.id,
+            quantidade: request.data.quantidade,
+            localizacao: request.data.localizacao,
+            //id_produto: request.data.produtos[0].id,
+          }
+          console.log(request.data)
         }
         $q.loading.hide();
       } catch (error) {
@@ -148,6 +154,7 @@ export default {
 
     async function atualiza() {
       try {
+        form.value.quantidade = Number(form.value.quantidade);
         const request = await api.put(
           `estoque/${$route.params.id}`,form.value);
         if (request.status == 200) {

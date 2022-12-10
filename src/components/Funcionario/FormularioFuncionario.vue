@@ -158,6 +158,7 @@ export default {
     async function cadastra() {
       try {
         const dadosFormatados = {...form.value,telefone,matricula:parseInt(form.value.telefone,form.value.matricula)}
+        console.log(dadosFormatados)
         const request = await api.post(`funcionarios`, dadosFormatados);
         
         if (request.status == 201) {
