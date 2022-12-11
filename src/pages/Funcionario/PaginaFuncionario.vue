@@ -49,7 +49,7 @@
               icon="edit"
               @click="
                 $router.push(
-                  `/editar-funcionarios/${scope.row.id}`
+                  `/editar-funcionario/${scope.row.id}`
                 )
               "
             />
@@ -113,15 +113,21 @@ const campos = [
     field: "telefone",
     align: "center",
     label: "Telefone",
-    style: "width: 15%",
+    style: "width: 30%",
   },
-
   {
     name: "email",
     field: "email",
     align: "center",
     label: "Email",
-    style: "width: 15%",
+    style: "width: 25%",
+  },
+  {
+    name: "matricula",
+    field: "matricula",
+    align: "center",
+    label: "Matrícula",
+    style: "width: 25%",
   },
   {
     name: "acao",
@@ -156,7 +162,7 @@ export default {
           `funcionarios`
         );
 
-        console.log(request)
+        console.log({request})
 
         funcionario.value = request.data;
         // totalPaginas.value = request.data.meta.totalPages;

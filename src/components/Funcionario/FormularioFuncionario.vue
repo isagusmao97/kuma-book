@@ -117,9 +117,8 @@ export default {
       telefone: "",
       email: "",
       horarioTrabalho: "",
-      matricula:""
+      matricula: "",
     });
-
 
     onMounted(() => {
       if (props.acao === "editar") {
@@ -133,7 +132,7 @@ export default {
         const request = await api.get(`funcionarios/${$route.params.id}`);
         if (request.status == 200) {
           form.value = request.data;
-          console.log(request)
+          console.log(request);
         }
         $q.loading.hide();
       } catch (error) {
@@ -148,6 +147,7 @@ export default {
     }
 
     function submit() {
+      console.log(props.acao);
       if (props.acao === "editar") {
         atualiza();
       } else {
@@ -157,10 +157,14 @@ export default {
 
     async function cadastra() {
       try {
-        const dadosFormatados = {...form.value,telefone,matricula:parseInt(form.value.telefone,form.value.matricula)}
-        console.log(dadosFormatados)
+        const dadosFormatados = {
+          ...form.value,
+          telefone: parseInt(form.value.telefone.replace(/[\(\)\-]/g,'')),
+          matricula: parseInt(form.value.matricula.replace(/[\-]/g,'')),
+        };
+        console.log({ dadosFormatados });
         const request = await api.post(`funcionarios`, dadosFormatados);
-        
+        console.log(request);
         if (request.status == 201) {
           $q.notify({
             color: "positive",
@@ -172,6 +176,7 @@ export default {
         }
         $q.loading.hide();
       } catch (error) {
+        console.log(error);
         $q.notify({
           color: "negative",
           position: "top",
@@ -184,9 +189,14 @@ export default {
 
     async function atualiza() {
       try {
+         const dadosFormatados = {
+          ...form.value,
+          telefone: parseInt(form.value.telefone.replace(/[\(\)\-]/g,'')),
+          matricula: parseInt(form.value.matricula.replace(/[\-]/g,'')),
+        };
         const request = await api.put(
           `funcionarios/${$route.params.id}`,
-          form.value
+          dadosFormatados
         );
         if (request.status == 200) {
           $q.notify({
@@ -212,7 +222,6 @@ export default {
     return {
       form,
       submit,
-
     };
   },
 };
@@ -222,4 +231,3 @@ label {
   color: #777;
 }
 </style>
-
