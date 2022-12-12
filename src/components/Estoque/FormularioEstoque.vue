@@ -11,7 +11,7 @@
             label="Id"
             :rules="[(val) => !!val || 'Campo Obrigatório']"
           />
-        </div> 
+        </div>
         <div class="col-10 col-sm-6">
           <q-input
             ref="quantidade"
@@ -22,7 +22,7 @@
             label="Quantidade"
             :rules="[(val) => !!val || 'Campo Obrigatório']"
           />
-        </div> 
+        </div>
         <div class="col-12 col-sm-6">
           <q-input
             ref="localizacao"
@@ -83,14 +83,14 @@ export default {
 
 
     onMounted(() => {
-     
+
       if (props.acao === "editar") {
         carregaDados();
       }else{
         const route = useRoute();
         const id = route.params.id;
         form.value.id = id;
-      } 
+      }
     });
 
     async function carregaDados() {
@@ -102,7 +102,7 @@ export default {
             id: request.data.id,
             quantidade: request.data.quantidade,
             localizacao: request.data.localizacao,
-            //id_produto: request.data.produtos[0].id,
+            id_produto: request.data.produtos.id,
           }
           console.log(request.data)
         }
@@ -129,7 +129,7 @@ export default {
     async function cadastra() {
       try {
         const dadosFormatados = {...form.value,quantidade:parseInt(form.value.quantidade)}
-        
+
         const request = await api.post(`estoque`, dadosFormatados);
         if (request.status == 201) {
           $q.notify({

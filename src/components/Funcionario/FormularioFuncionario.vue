@@ -159,7 +159,7 @@ export default {
       try {
         const dadosFormatados = {
           ...form.value,
-          telefone: parseInt(form.value.telefone.replace(/[\(\)\-]/g,'')),
+          telefone: (form.value.telefone.replace(/[\(\)\-]/g,'')),
           matricula: parseInt(form.value.matricula.replace(/[\-]/g,'')),
         };
         console.log({ dadosFormatados });
@@ -191,7 +191,7 @@ export default {
       try {
          const dadosFormatados = {
           ...form.value,
-          telefone: parseInt(form.value.telefone.replace(/[\(\)\-]/g,'')),
+          telefone: (form.value.telefone.replace(/[\(\)\-]/g,'')),
           matricula: parseInt(form.value.matricula.replace(/[\-]/g,'')),
         };
         const request = await api.put(
