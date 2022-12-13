@@ -234,6 +234,8 @@ export default {
             timeout: 350,
           });
         }
+        estoque.value = [];
+
         buscaDados();
       } catch (error) {
         $q.notify({
