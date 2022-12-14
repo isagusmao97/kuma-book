@@ -190,7 +190,7 @@ export default {
 
         console.log(request)
 
-        produto.value = request.data;
+        funcionario.value = request.data;
         // totalPaginas.value = request.data.meta.totalPages;
         $q.loading.hide();
       } catch (error) {

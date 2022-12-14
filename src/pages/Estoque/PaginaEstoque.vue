@@ -199,8 +199,8 @@ export default {
         );
 
         console.log(request)
-
-        produto.value = request.data;
+        
+        produto.estoque.value = request.data;
         // totalPaginas.value = request.data.meta.totalPages;
         $q.loading.hide();
       } catch (error) {
