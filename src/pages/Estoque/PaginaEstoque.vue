@@ -33,7 +33,7 @@
       <template v-slot:body-cell-acao="scope">
         <td>
           <div class="q-pa-sm text-center q-gutter-sm items-center">
-            <q-btn
+            <q-btn v-if="!scope.row.id_estoque"
               title="Adicionar"
               dense
               icon="add"
@@ -41,7 +41,7 @@
               size="sm"
               :to="`/adicionar-estoque/${scope.row.id_produto}`"
             />
-            <q-btn
+            <q-btn v-if="scope.row.id_estoque"
               title="Editar"
               dense
               size="sm"
@@ -54,7 +54,7 @@
                 )
               "
             />
-            <q-btn
+            <q-btn v-if="scope.row.id_estoque"
               dense
               size="sm"
               unelevated
