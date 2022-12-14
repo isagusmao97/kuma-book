@@ -147,15 +147,7 @@ export default {
         const request = await api.get(
           `estoque`
         );
-        console.log(request.data)
-
-        // estoque.value = request.data;
-        /*estoque.value = {
-          nome: request.data.nome,
-          quantidade: request.data.estoque.quantidade,
-          localizacao: request.data.estoque.localizacao,
-        };*/
-
+        estoque.value = [];
         request.data.forEach(produto => {
           if(produto.estoque) {
             estoque.value.push ({
@@ -197,11 +189,28 @@ export default {
         const request = await api.get(
           `estoque/pesquisa/${pesquisa.value}`
         );
+        estoque.value = [];
+        request.data.forEach(produto => {
+          if(produto.estoque) {
+            estoque.value.push ({
+              nome: produto.nome,
+              quantidade: produto.estoque.quantidade,
+              localizacao: produto.estoque.localizacao,
+              id_produto: produto.id,
+              id_estoque: produto.estoque.id,
+              })
+            }else {
+              estoque.value.push({
+                nome: produto.nome,
+                id_produto: produto.id,
+              });
+            }
+          });
 
-        console.log(request)
-        
-        produto.estoque.value = request.data;
-        // totalPaginas.value = request.data.meta.totalPages;
+
+        //produto.estoque.value = request.data;
+        //estoque.produto.value = request.data;
+        //estoque.value = request.data;
         $q.loading.hide();
       } catch (error) {
         $q.notify({
@@ -216,7 +225,7 @@ export default {
     }
 
     function exibeMensagemConfirmacao(id) {
-      exibeMensagem("Tem certeza de que deseja excluir esse produto?").onOk(
+      exibeMensagem("Tem certeza de que deseja excluir esse estoque?").onOk(
         () => {
           exclui(id);
         }
@@ -229,7 +238,7 @@ export default {
         if (request.status == 200) {
           $q.notify({
             type: "positive",
-            message: "Produto removido com sucesso!",
+            message: "Estoque removido com sucesso!",
             position: "top",
             timeout: 350,
           });
